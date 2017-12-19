@@ -92,7 +92,7 @@ class Response(object):
                     builder.event(event, value)
 
         if (has_result_single or has_result_many) and self.count == 0:  # Results empty
-            yield {}
+            raise StopIteration
 
         if not (has_result_single or has_result_many or has_error):  # None of the expected keys were found
             raise MissingResult('The expected `result` key was missing in the response. Cannot continue')
